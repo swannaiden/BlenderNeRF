@@ -98,7 +98,7 @@ class BlenderNeRF_Operator(bpy.types.Operator):
             scene.frame_set(frame)
             filename = os.path.basename( scene.render.frame_path(frame=frame) )
             filedir = OUTPUT_TRAIN * (mode == 'TRAIN') + OUTPUT_TEST * (mode == 'TEST')
-
+            camera = scene.camera
             frame_data = {
                 'file_path': os.path.join(filedir, filename),
                 'transform_matrix': self.listify_matrix( camera.matrix_world )
